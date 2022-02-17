@@ -4,6 +4,7 @@
 using NeoCortexApi.Encoders;
 using NeoCortexApi.Utility;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,12 +12,52 @@ using System.Text;
 
 namespace NeoCortexApi
 {
-    public class program
+    public class Helpers
     {
+       
+      
+        public static void Main(string[] args)
+        {
+            
+            Console.WriteLine("Enter the 1st array:\n");
+
+            string num1 = Console.ReadLine();
+            //string[] Mynumbers1 = num1.Split(' , '); 
+            int[] myInts1 = new int[Mynumbers1.Length];
+
+            for (int i = 0; i < MyInts1.Length; i++)
+            {
+                string myString = Mynumbers1[i].Trim();
+                myInts1[i] = int.Parse(myString);    
+            }
+            Console.WriteLine("");
+
+
+            Console.WriteLine("Enter the 2nd array:\n");
+            string num2 = Console.ReadLine();
+            //string[] Mynumbers2 = num2.Split(' , '); 
+            int[] myInts2 = new int[Mynumbers2.Length];
+
+            for (int i = 0; i < MyInts2.Length; i++)
+            {
+                string myString = Mynumbers2[i].Trim();
+                myInts2[i] = int.Parse(myString);    
+            }
+            Console.WriteLine("");
+
+            var merged = new List<int>(myInts2).Concat(myInts1.Except(myInts2)).OrderBy(e => e);
+            var awithEmpty = merged.Select((e) => myInts1.Contains(e) ? e : 0);
+            var bwithEmpty = merged.Select((e) => myInts2.Contains(e) ? e : 0);
+
+            Console.WriteLine("The result:");
+            Console.WriteLine("");
+            
+        }
+         
         /// <summary>
-        /// Creates random vector of specified dimension.
+        /// creates random vector of specified dimension.
         /// </summary>
-        /// <param name="numOfBits"></param>
+        /// <param name="numofbits"></param>
         /// <param name="rnd"></param>
         /// <returns></returns>
         public static int[] GetRandomVector(int numOfBits, Random rnd = null)
@@ -34,7 +75,10 @@ namespace NeoCortexApi
             return vector;
         }
 
-
+        public string TraceSdrsMethod(List<int[]> indexesOfNoneZeros, string paddingTxt = " ", bool renderSimilarityMatrix = false)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Creates string representation from one dimensional vector.
@@ -144,6 +188,8 @@ namespace NeoCortexApi
                 return nodes;
             }
         }
+
+        public static object lyrOut { get; private set; }
 
         ///// <summary>
         ///// Gets default sparse dictionary configuration.
@@ -323,59 +369,7 @@ namespace NeoCortexApi
 
             return sb.ToString() + results;
         }
-        /// 
-
-        static void Main(string[] args)
-        {
-            ScalarEncoder timeEncoder = new ScalarEncoder(new Dictionary<string, object>()
-            {
-                { "W", 5},
-                { "N", 30},
-                { "MinVal", (double)0},
-                { "MaxVal", (double)24},
-                { "Periodic", false},
-                { "Name", "Time of the day."},
-                { "ClipInput", true},
-            });
-
-            Console.WriteLine("\nTime");
-            Console.WriteLine(timeEncoder.TraceSimilarities());
-
-            string results = timeEncoder.TraceSimilarities();
-
-            Dictionary<string, int[]> sdrDict = new Dictionary<string, int[]>();
-
-            for (int day = 1; day < 8; day++)
-            {
-                for (int hour = 0; hour < 24; hour++)
-                {
-                    int[] vs = timeEncoder.Encode(hour);
-                    var sdrHour = vs;
-                    //var sdrDay = dayEncoder.Encode(day);
-                    List<int> sdrDayTime = new List<int>();
-
-                    //sdrDayTime.AddRange(sdrDay);
-                    sdrDayTime.AddRange(sdrHour);
-
-                    string key = $"{day.ToString("00")}-{hour.ToString("00")}";
-
-                    sdrDict.Add(key, sdrDayTime.ToArray());
-
-                    var str = Helpers.StringifyVector(sdrDayTime.ToArray());
-
-                    //int[,] twoDimenArray = ArrayUtils.Make2DArray<int>(sdrDayTime.ToArray(), (int)Math.Sqrt(sdrDayTime.ToArray().Length), (int)Math.Sqrt(sdrDayTime.ToArray().Length));
-                    //var twoDimArray = ArrayUtils.Transpose(twoDimenArray);
-
-                    //NeoCortexUtils.DrawBitmap(twoDimArray, 1024, 1024, Path.Combine(folderName, $"{key}.jpg"), Color.Black, Color.Gray, text: $"{day}-{hour}".ToString());
-                }
-            }
-
-            Console.WriteLine("\nDay-Time");
-
-            Console.WriteLine(program.TraceSimilarities(sdrDict));
-
-
-        }
+        
 
     }
 }
