@@ -2,8 +2,15 @@
 
 The goal of our project is to implement the well-formatted tracing of multiple SDRs that we will get using StringifyVector() method, so they can be easily compared in the output window.
 
+
 ## Project Description 
 In this project we have to trace out the SDr values using the below mentioned method
 Helpers.StringifyVector(lyrOut.PredictiveCells.Select(c => c.Index).ToArray())
 
-Using StringifyVector() method, we get the SDR
+## The SDR value will get from creating a new StrongifyVector() method:
+51, 76, 87, 113, 116, 118, 122, 152, 156, 163, 179, 181, 183, 186, 188, 190, 195, 210, 214, 224,
+51, 76, 113, 116, 118, 156, 163, 179, 181, 182, 183, 186, 188, 190, 195, 197, 210, 214, 224, 243
+
+After this we need to add a space or any pading text to create a well format look of SDR values and it should look lie this:
+51, 76, 87, 113, 116, 118, 122, 152, 156, 163, 179, 181,  ,183, 186, 188, 190, 195,   ,210, 214, 224,
+51, 76,   ,113, 116, 118,   ,156, 163, 179, 181, 182, 183, 186, 188, 190, 195, 197, 210, 214, 224, 243
