@@ -9,16 +9,18 @@ Helpers.StringifyVector(lyrOut.PredictiveCells.Select(c => c.Index).ToArray())
 
 ## The SDR value will get from creating a new StrongifyVector() method:
 51, 76, 87, 113, 116, 118, 122, 152, 156, 163, 179, 181, 183, 186, 188, 190, 195, 210, 214, 224,
+
 51, 76, 113, 116, 118, 156, 163, 179, 181, 182, 183, 186, 188, 190, 195, 197, 210, 214, 224, 243
 
-After this we need to add a space or any pading text to create a well format look of SDR values and it should look lie this:
-51, 76, 87, 113, 116, 118, 122, 152, 156, 163, 179, 181,  ,183, 186, 188, 190, 195,   ,210, 214, 224,
-51, 76,   ,113, 116, 118,   ,156, 163, 179, 181, 182, 183, 186, 188, 190, 195, 197, 210, 214, 224, 243
+After this we need to add a space or any pading text to create a well format look of SDR values and it should look like what we got in our output result.
 
 
 
 ## Our Approach
 
+To print this SDR values as mentioned above, we created a new Stringify() method with two sdrs in list such like this:
+
+![2022-02-26_15-14-06](https://user-images.githubusercontent.com/45165287/156222938-6feee543-24c4-4b81-b7f2-f16b58bdd9d1.png)
 
 The Output result:
 
