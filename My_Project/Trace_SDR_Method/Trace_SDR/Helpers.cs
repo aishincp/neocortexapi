@@ -17,16 +17,14 @@ public class Helpers
     //List of int array for sdrs
     public static string StringifyVector(List<int[]> sdrs)
     {
+            
         //The count for sdr starting from initial position [0,0]
         var heads =new List<int>(new int[sdrs.Count]);
         var outputs = new StringBuilder[sdrs.Count];
 
         while (true)
         {
-            /// <summary>
-            /// <param name="output">The output SDRs of the Spatial Pooler compute cycle.</param>
-            /// <returns></returns>
-            /// 
+            
       
             int minActiveColumn = -1;
 
