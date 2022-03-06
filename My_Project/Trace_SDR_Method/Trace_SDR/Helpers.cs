@@ -12,11 +12,14 @@ public class Helpers
     /// This effect is taking a sample of sdrs that can be generated from Spatial Pattern and everytime the columns can vary in every set.
     /// So show the difference where the values are changing, we implement this method
     /// </summary>
-    public static StringBuilder[] StringifyVector(List<List<int>> vector)
+    
+
+    //List of int array for sdrs
+    public static string StringifyVector(List<int[]> sdrs)
     {
         //The count for sdr starting from initial position [0,0]
-        var ptrs = new int[vector.Count];  
-        var output = new StringBuilder[vector.Count];
+        var heads =new List<int>(new int[sdrs.Count]);
+        var outputs = new StringBuilder[sdrs.Count];
 
         while (true)
         {
@@ -24,22 +27,21 @@ public class Helpers
             /// <param name="output">The output SDRs of the Spatial Pooler compute cycle.</param>
             /// <returns></returns>
             /// 
-
-            //The index will decide which SDR to take
-            int index = 0;       
+      
             int minActiveColumn = -1;
 
             //pointer loops twice for 2 sdrs
             //on each loop you get the current index of that sdr
-                foreach (var ptr in ptrs)
+            for (int i = 0; i < sdrs.Count; i++)
             {
-                var sdr = vector[index];  
-                if (ptr > sdr.Count - 1)
+                var head = heads[i];
+                var sdr = sdrs[i];  
+
+                if (heads[i] > sdr.Length - 1)
                 {
-                    index++;
                     continue;
                 }
-                var activeColumn = sdr[ptr];
+                var activeColumn = sdr[head];
                 if (minActiveColumn == -1)
                 {
                     minActiveColumn = activeColumn;
@@ -49,40 +51,47 @@ public class Helpers
                     if (activeColumn < minActiveColumn)
                         minActiveColumn = activeColumn;
                 }
-
-                index++;
             }
+            // Exit the program
             if (minActiveColumn == -1)
             {
-                return output;
+                var result = new StringBuilder();
+                foreach (var output in outputs)
+                {
+                    result.AppendLine(output.ToString());
+                }
+                return result.ToString();
             }
 
-            //resetting the index value again
-
-            index = 0; 
-            foreach (var ptr in ptrs)
+            for (int i = 0; i < sdrs.Count; i++)
             {
-                if (output[index] == null)
+                if (outputs[i] == null)
                 {
-                    output[index] = new StringBuilder();
+                    outputs[i] = new StringBuilder();
                 }
 
-                if (ptr < vector[index].Count && vector[index][ptr] == minActiveColumn)
+                var head = heads[i];
+                var sdr = sdrs[i];
+                if (head < sdr.Length && sdr[head] == minActiveColumn)
                 {
-                    output[index].Append(minActiveColumn);
-                    output[index].Append(", ");
-                    ptrs[index]++;
-
+                    outputs[i].Append(minActiveColumn);
+                    outputs[i].Append(", ");
+                    heads[i] = head + 1;
                 }
                 else
                 {
-                    output[index].Append("  ");
-                    output[index].Append(", ");
+                    var numOfSpaces = minActiveColumn.ToString().Length;
+                    for (var j = 0; j < numOfSpaces; j++)
+                    {
+                        outputs[i].Append(" ");
+                    }
+                    
+                    outputs[i].Append(", ");
                 }
-
-                index++;
             }
         }
+
+        
     }
 
 
