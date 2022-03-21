@@ -17,19 +17,17 @@ public class Helpers
     //List of int array for sdrs
     public static string StringifyVector(List<int[]> sdrs)
     {
-            
+
         //The count for sdr starting from initial position [0,0]
-        var heads =new List<int>(new int[sdrs.Count]);
-        var outputs = new StringBuilder[sdrs.Count];
+        List<int> heads;
+        StringBuilder[] outputs;
+        SDRLists(sdrs, out heads, out outputs);
 
         while (true)
         {
-            
-      
             int minActiveColumn = -1;
 
-            //pointer loops twice for 2 sdrs
-            //on each loop you get the current index of that sdr
+            //pointer loops twice for both the sdrs & on each loop you get the current index of that particular sdr
             for (int i = 0; i < sdrs.Count; i++)
             {
                 var head = heads[i];
@@ -90,6 +88,12 @@ public class Helpers
         }
 
         
+    }
+
+    private static void SDRLists(List<int[]> sdrs, out List<int> heads, out StringBuilder[] outputs)
+    {
+        heads = new List<int>(new int[sdrs.Count]);
+        outputs = new StringBuilder[sdrs.Count];
     }
 
 
