@@ -28,26 +28,10 @@ public class Helpers
             int minActiveColumn = -1;
 
             //pointer loops twice for both the sdrs & on each loop you get the current index of that particular sdr
-            for (int i = 0; i < sdrs.Count; i++)
-            {
-                var head = heads[i];
-                var sdr = sdrs[i];  
 
-                if (heads[i] > sdr.Length - 1)
-                {
-                    continue;
-                }
-                var activeColumn = sdr[head];
-                if (minActiveColumn == -1)
-                {
-                    minActiveColumn = activeColumn;
-                }
-                else
-                {
-                    if (activeColumn < minActiveColumn)
-                        minActiveColumn = activeColumn;
-                }
-            }
+            minActiveColumn = Results(sdrs, heads, minActiveColumn); 
+
+
             // Exit the program
             if (minActiveColumn == -1)
             {
@@ -58,38 +42,80 @@ public class Helpers
                 }
                 return result.ToString();
             }
+            ActiveColumnReset(sdrs, heads, outputs, minActiveColumn);
+            
+        }
+    }
 
-            for (int i = 0; i < sdrs.Count; i++)
+    /// <summary>
+    /// 1st method
+    /// </summary>
+    private static void ActiveColumnReset(List<int[]> sdrs, List<int> heads, StringBuilder[] outputs, int minActiveColumn)
+    {
+        for (int i = 0; i < sdrs.Count; i++)
+        {
+            if (outputs[i] == null)
             {
-                if (outputs[i] == null)
-                {
-                    outputs[i] = new StringBuilder();
-                }
+                outputs[i] = new StringBuilder();
+            }
+            var head = heads[i];
+            var sdr = sdrs[i];
 
-                var head = heads[i];
-                var sdr = sdrs[i];
-                if (head < sdr.Length && sdr[head] == minActiveColumn)
+            if (head < sdr.Length && sdr[head] == minActiveColumn)
+            {
+                outputs[i].Append(minActiveColumn);
+                outputs[i].Append(", ");
+                heads[i] = head + 1;
+            }
+            else
+            {
+                var numOfSpaces = minActiveColumn.ToString().Length;    
+                for (var j = 0; j < numOfSpaces; j++)
                 {
-                    outputs[i].Append(minActiveColumn);
-                    outputs[i].Append(", ");
-                    heads[i] = head + 1;
+                    outputs[i].Append(" ");
                 }
-                else
+                outputs[i].Append(", ");
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// 2nd method
+    /// </summary>
+    private static int Results(List<int[]> sdrs, List<int> heads, int minActiveColumn)
+    {
+        for (int i = 0; i < sdrs.Count; i++)
+        {
+            var head = heads[i];
+            var sdr = sdrs[i];
+
+            if (heads[i] > sdr.Length - 1)
+            {
+                continue;
+            }
+
+            var activeColumn = sdr[head];
+            if (minActiveColumn == -1)
+            {
+                minActiveColumn = activeColumn;
+            }
+            else
+            {
+                if (activeColumn < minActiveColumn)
                 {
-                    var numOfSpaces = minActiveColumn.ToString().Length;
-                    for (var j = 0; j < numOfSpaces; j++)
-                    {
-                        outputs[i].Append(" ");
-                    }
-                    
-                    outputs[i].Append(", ");
+                    minActiveColumn = activeColumn;
                 }
             }
         }
-
+        return minActiveColumn;
         
     }
 
+
+    /// <summary>
+    /// 3rd method
+    /// </summary>
     private static void SDRLists(List<int[]> sdrs, out List<int> heads, out StringBuilder[] outputs)
     {
         heads = new List<int>(new int[sdrs.Count]);
