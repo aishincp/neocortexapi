@@ -25,3 +25,16 @@ To print this SDR values as mentioned above, we created a new Stringify() method
 The Output result:
 
 ![2022-02-26_15-13-43](https://user-images.githubusercontent.com/45165287/156222474-3dca0271-0874-45c4-8197-2b8de0d385b5.png)
+
+
+## New Improvizations
+
+Now the Output is well-formatted with a space/padding as shown: 
+![2022-03-06_20-51-26](https://user-images.githubusercontent.com/45165287/156941160-ac866d63-f13b-43ff-8635-f16950a09f77.png)
+
+Changed the StringifyVector method which returns the string
+
+![2022-03-06_20-52-26](https://user-images.githubusercontent.com/45165287/156941225-8143cbdc-70fa-4c35-92af-8554e791a6b4.png)
+
+
+
