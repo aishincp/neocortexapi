@@ -8,7 +8,7 @@ public class Helpers
 
     }
     /// <summary>
-    /// Implements the well formatted pattern of SDR values from the SP.  
+    /// This method implements the well formatted pattern of SDR values from the SP.  
     /// This effect is taking a sample of sdrs that can be generated from Spatial Pattern and everytime the columns can vary in every set.
     /// So show the difference where the values are changing, we implement this method
     /// </summary>
