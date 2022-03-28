@@ -3,12 +3,8 @@ using System.Text;
 
 public class Helpers
 {
-    public Helpers()
-    {
-
-    }
     /// <summary>
-    /// This method implements the well formatted pattern of SDR values from the SP.  
+    /// This method implements the well formatted pattern of SDR values from the HTM.  
     /// This effect is taking a sample of sdrs that can be generated from Spatial Pattern and everytime the columns can vary in every set.
     /// So show the difference where the values are changing, we implement this method
     /// </summary>
@@ -17,19 +13,19 @@ public class Helpers
     //List of int array for sdrs
     public static string StringifyVector(List<int[]> sdrs)
     {
-
+        var heads = new List<int>(new int[sdrs.Count]);
+        var outputs = new StringBuilder[sdrs.Count];
         //The count for sdr starting from initial position [0,0]
-        List<int> heads;
-        StringBuilder[] outputs;
-        SDRLists(sdrs, out heads, out outputs);
+       
 
         while (true)
         {
+            
             int minActiveColumn = -1;
 
             //pointer loops twice for both the sdrs & on each loop you get the current index of that particular sdr
 
-            minActiveColumn = Results(sdrs, heads, minActiveColumn); 
+            minActiveColumn = SDR_Results(sdrs, heads, minActiveColumn); 
 
 
             // Exit the program
@@ -42,15 +38,17 @@ public class Helpers
                 }
                 return result.ToString();
             }
-            ActiveColumnReset(sdrs, heads, outputs, minActiveColumn);
-            
+            //Output has a certain value
+            Append_ActiveColumn(sdrs, heads, outputs, minActiveColumn);
+            //here the output changes
+            //Now compare the new ouput and the expected value of the output
         }
     }
 
     /// <summary>
     /// 1st method
     /// </summary>
-    private static void ActiveColumnReset(List<int[]> sdrs, List<int> heads, StringBuilder[] outputs, int minActiveColumn)
+    public static void Append_ActiveColumn(List<int[]> sdrs, List<int> heads, StringBuilder[] outputs, int minActiveColumn)
     {
         for (int i = 0; i < sdrs.Count; i++)
         {
@@ -83,7 +81,7 @@ public class Helpers
     /// <summary>
     /// 2nd method
     /// </summary>
-    private static int Results(List<int[]> sdrs, List<int> heads, int minActiveColumn)
+    public static int SDR_Results(List<int[]> sdrs, List<int> heads, int minActiveColumn)
     {
         for (int i = 0; i < sdrs.Count; i++)
         {
@@ -113,15 +111,7 @@ public class Helpers
     }
 
 
-    /// <summary>
-    /// 3rd method
-    /// </summary>
-    private static void SDRLists(List<int[]> sdrs, out List<int> heads, out StringBuilder[] outputs)
-    {
-        heads = new List<int>(new int[sdrs.Count]);
-        outputs = new StringBuilder[sdrs.Count];
-    }
-
+   
 
 
 }
