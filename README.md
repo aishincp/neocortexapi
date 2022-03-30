@@ -1,40 +1,46 @@
-# NeoCortexApi - To Implement Trace SDR Method
+# Implement Trace SDR Method
 
-The goal of our project is to implement the well-formatted tracing of multiple SDRs that we will get using StringifyVector() method, so they can be easily compared in the output window.
-
+#### The goal of this project is to implement the well-formatted tracing of multiple SDRs 
 
 ## Project Description 
-In this project we have to trace out the SDr values using the below mentioned method
-Helpers.StringifyVector(lyrOut.PredictiveCells.Select(c => c.Index).ToArray())
+## Aim:
+In Hirarchical Temporal Memory, the underlying Spatial Pooler algorithms generates continuous SDR which are encoded with some input or sequence. The activation of neurons is not always the same for every sequence. This experiment aims to describe the two SDR sequences  taken to investigate the two slightly different sets of encoded inputs by using a new method that will differentiate the SDR values and manifest the dissimilarity in both the traced sequences SDR. The different sets of inputs in both SDR lists have semantic similar inputs. Every bits in SDR are not designated with any value or names, but it has a semantic meaning which are to be learned [4]. The experiment we did here, shows the work of the two SDRs which has the active bits on the similar locations and in some locations there are dissimilar or inactive bits and both SDR sets allot the same semantic attributes because of the active bits in same place. The investigation we proposed here, there is an overlap between both the SDRs as they have somewhere same set of active bits, so we can immediately compare between the two representations which are semantically similar and differentiate the parts or bits which are dissimilar. Within one set of neurons, an SDR at one point in time can associatively link to the next occurring SDR.
 
-## The SDR value will get from creating a new StrongifyVector() method:
-51, 76, 87, 113, 116, 118, 122, 152, 156, 163, 179, 181, 183, 186, 188, 190, 195, 210, 214, 224,
+## Architecture:
+### Part I:
+
+The StringifyVector method, which is already implemented generates or trace out the SDRs. The following line of code is used
+
+> **_Code Line:_**  Helpers.StringifyVector(lyrOut.PredictiveCells.Select(c => c.Index).ToArray())
+
+This method produces the output such as two sets of SDR. The method produces outputs like following one:
+
+---
+
+**Output of StringifyVector method**
+
+51, 76, 87, 113, 116, 118, 122, 152, 156, 163, 179, 181, 183, 186, 188, 190, 195, 210, 214, 224, 
 
 51, 76, 113, 116, 118, 156, 163, 179, 181, 182, 183, 186, 188, 190, 195, 197, 210, 214, 224, 243
 
-After this we need to add a space or any pading text to create a well format look of SDR values and it should look like what we got in our output result.
+---
+The result of above mentioned method, shows indexes of bits that are active. Now, the output of SDR are similar, then it is challenging to see the difference in both the SDRs. Hence, we constructed a new method called Stringify_TraceSDR. The following new method Stringify_TraceSDR shows how to differ between two SDR sets in a well arranged index.
+
+---
+
+**Block of Code**
+
+string Stringify_TraceSDR(List<int[]> sdrs)
+{
+
+     var heads = new List<int>(newint[sdrs.Count]);
+     
+     var outputs = new StringBuilder[sdrs.Count]);
+}
+---
 
 
 
-## Our Approach
-
-To print this SDR values as mentioned above, we created a new Stringify() method with two sdrs in list such like this:
-
-![2022-02-26_15-14-06](https://user-images.githubusercontent.com/45165287/156222938-6feee543-24c4-4b81-b7f2-f16b58bdd9d1.png)
-
-The Output result:
-
-![2022-02-26_15-13-43](https://user-images.githubusercontent.com/45165287/156222474-3dca0271-0874-45c4-8197-2b8de0d385b5.png)
-
-
-## New Improvizations
-
-Now the Output is well-formatted with a space/padding as shown: 
-![2022-03-06_20-51-26](https://user-images.githubusercontent.com/45165287/156941160-ac866d63-f13b-43ff-8635-f16950a09f77.png)
-
-Changed the StringifyVector method which returns the string
-
-![2022-03-06_20-52-26](https://user-images.githubusercontent.com/45165287/156941225-8143cbdc-70fa-4c35-92af-8554e791a6b4.png)
 
 
 
