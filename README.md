@@ -4,7 +4,7 @@
 
 ## Project Description 
 ## Aim:
-In Hirarchical Temporal Memory, the underlying Spatial Pooler algorithms generates continuous SDR which are encoded with some input or sequence. The activation of neurons is not always the same for every sequence. This experiment aims to describe the two SDR sequences  taken to investigate the two slightly different sets of encoded inputs by using a new method that will differentiate the SDR values and manifest the dissimilarity in both the traced sequences SDR. The different sets of inputs in both SDR lists have semantic similar inputs. Every bits in SDR are not designated with any value or names, but it has a semantic meaning which are to be learned [4]. The experiment we did here, shows the work of the two SDRs which has the active bits on the similar locations and in some locations there are dissimilar or inactive bits and both SDR sets allot the same semantic attributes because of the active bits in same place. The investigation we proposed here, there is an overlap between both the SDRs as they have somewhere same set of active bits, so we can immediately compare between the two representations which are semantically similar and differentiate the parts or bits which are dissimilar. Within one set of neurons, an SDR at one point in time can associatively link to the next occurring SDR.
+In Hierarchical Temporal Memory, the underlying Spatial Pooler algorithms generates continuous SDR which are encoded with some input or sequence. The activation of neurons is not always the same for every sequence. This experiment aims to describe the two SDR sequences  taken to investigate the two slightly different sets of encoded inputs by using a new method that will differentiate the SDR values and manifest the dissimilarity in both the traced sequences SDR. The different sets of inputs in both SDR lists have semantic similar inputs. Every bits in SDR are not designated with any value or names, but it has a semantic meaning which are to be learned. The experiment we did here, shows the work of the two SDRs which has the active bits on the similar locations and in some locations there are dissimilar or inactive bits and both SDR sets allot the same semantic attributes because of the active bits in same place. The investigation we proposed here, there is an overlap between both the SDRs as they have somewhere same set of active bits, so we can immediately compare between the two representations which are semantically similar and differentiate the parts or bits which are dissimilar. Within one set of neurons, an SDR at one point in time can associatively link to the next occurring SDR.
 
 ## Architecture:
 ### Part I:
@@ -39,7 +39,25 @@ string Stringify_TraceSDR(List<int[]> sdrs)
 }
 ---
 
+### Part II:
 
+The index of bit that are active are provided into Stringify_TraceSDR method and, now we further examine to create a well formatted SDRs. The implied method stores every bits of active column as a string. 
+
+The next step of our approach was to differentiate between the two SDRs which have similar index bit of active neurons, we create better results by adding gaps or space at places that have not the same index or inactive bits in the SDRs. Following code shows how to fill the space in place of missing index bit which are inactive. 
+
+---
+
+**Block of Code**
+
+
+var numOfSpaces = minActiveColumn.ToString().Length; 
+
+                for (var j = 0; j < numOfSpaces; j++)
+                {
+                    outputs[i].Append(" ");
+                }
+                outputs[i].Append(", ");
+---
 
 
 
