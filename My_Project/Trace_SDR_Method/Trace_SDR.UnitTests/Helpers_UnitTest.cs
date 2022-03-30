@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Trace_SDR.UnitTests
 {
+    /// <summary>
+    /// Compares the similarity of multiple SDRs.
+    /// </summary>
     [TestClass]
     public class Helpers_UnitTest
     {
@@ -18,9 +21,7 @@ namespace Trace_SDR.UnitTests
 
             var output = Helpers.StringifyVector(new List<int[]> { list, list1 });
 
-
             var expectedOutput = "51, 76, 87,    ,  \n51, 76,   , 113,";
-
 
             Assert.IsTrue(output == expectedOutput);
             Console.WriteLine($"{expectedOutput}");
