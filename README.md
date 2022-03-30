@@ -59,6 +59,9 @@ var numOfSpaces = minActiveColumn.ToString().Length;
                 outputs[i].Append(", ");
 ---
 
+## Result:
+The final result of our experiment, the SDR output creates spaces at those places where the representations do not have the same index. 
 
+![2022-03-30_05-25-16](https://user-images.githubusercontent.com/45165287/160745547-ddec4a29-db59-4a7f-a5c3-6f7a75ce11c0.png)
 
 
