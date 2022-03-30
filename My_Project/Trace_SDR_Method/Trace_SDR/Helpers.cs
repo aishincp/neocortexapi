@@ -4,33 +4,30 @@ using System.Text;
 public class Helpers
 {
     /// <summary>
-    /// This method implements the well formatted pattern of SDR values from the HTM.  
-    /// This effect is taking a sample of sdrs that can be generated from Spatial Pattern and everytime the columns can vary in every set.
-    /// So show the difference where the values are changing, we implement this method
+    /// Creates string representation from one dimensional value. 
     /// </summary>
+    /// <param name="sdrs">Stores the SDR sets.</param>
+    /// <returns>List of strings</returns>
     
-
-    //List of int array for sdrs
     public static string StringifyVector(List<int[]> sdrs)
     {
+        //List of string of arrays for SDR set
         var heads = new List<int>(new int[sdrs.Count]);
+        
+        //The count for SDR starting from initial position [0,0]
         var outputs = new StringBuilder[sdrs.Count];
         //The count for sdr starting from initial position [0,0]
-       
 
         while (true)
         {
-            
+            //We set the minimum value as initial value of SDRs can be 0
             int minActiveColumn = -1;
-
-            //pointer loops twice for both the sdrs & on each loop you get the current index of that particular sdr
 
             minActiveColumn = SDR_Results(sdrs, heads, minActiveColumn); 
 
-
-            // Exit the program
             if (minActiveColumn == -1)
             {
+                //Stores a mutable string of characters.
                 var result = new StringBuilder();
                 foreach (var output in outputs)
                 {
@@ -38,16 +35,20 @@ public class Helpers
                 }
                 return result.ToString();
             }
-            //Output has a certain value
+            
             Append_ActiveColumn(sdrs, heads, outputs, minActiveColumn);
-            //here the output changes
-            //Now compare the new ouput and the expected value of the output
+           
         }
     }
 
     /// <summary>
-    /// 1st method
+    /// Stores the SDR values from both sets and arrange them.
     /// </summary>
+    /// <param name="sdrs">The SDR values as index bit of active neurons</param>
+    /// <param name="heads">The two representations taken as input.</param>
+    /// <param name="outputs">Represents every index bit of representations.</param>
+    /// <param name="minActiveColumn">Stores the similar semantic active and inactive bits for comparison.</param>
+    /// <summary>
     public static void Append_ActiveColumn(List<int[]> sdrs, List<int> heads, StringBuilder[] outputs, int minActiveColumn)
     {
         for (int i = 0; i < sdrs.Count; i++)
@@ -79,7 +80,7 @@ public class Helpers
 
 
     /// <summary>
-    /// 2nd method
+    /// Creates the reusults of SDRs in a well arrangement
     /// </summary>
     public static int SDR_Results(List<int[]> sdrs, List<int> heads, int minActiveColumn)
     {
