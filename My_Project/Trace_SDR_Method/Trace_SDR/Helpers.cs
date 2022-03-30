@@ -2,8 +2,7 @@
 using System.Text;
 
 public class Helpers
-{
-<<<<<<< HEAD
+{ 
     public Helpers()
     {
 
@@ -20,31 +19,11 @@ public class Helpers
 
         //The count for SDR starting from initial position [0,0]
         var outputs = new StringBuilder[sdrs.Count];
-=======
-    /// <summary>
-    /// Creates string representation from one dimensional value. 
-    /// </summary>
-    /// <param name="sdrs">Stores the SDR sets.</param>
-    /// <returns>List of strings</returns>
-    
-    public static string StringifyVector(List<int[]> sdrs)
-    {
-        //List of string of arrays for SDR set
-        var heads = new List<int>(new int[sdrs.Count]);
-        
-        //The count for SDR starting from initial position [0,0]
-        var outputs = new StringBuilder[sdrs.Count];
-        //The count for sdr starting from initial position [0,0]
->>>>>>> 4f27fdbaa65f1bf5bc36651ca08ec5930e8b859d
 
         while (true)
         {
             //We set the minimum value as initial value of SDRs can be 0
             int minActiveColumn = -1;
-<<<<<<< HEAD
-=======
-
->>>>>>> 4f27fdbaa65f1bf5bc36651ca08ec5930e8b859d
             minActiveColumn = SDR_Results(sdrs, heads, minActiveColumn); 
 
             if (minActiveColumn == -1)
@@ -91,7 +70,7 @@ public class Helpers
             }
             else
             {
-                //
+                //Creates a padding or spacing on the indices of inactive bits
                 var numOfSpaces = minActiveColumn.ToString().Length;    
                 for (var j = 0; j < numOfSpaces; j++)
                 {
@@ -105,7 +84,6 @@ public class Helpers
     /// <summary>
     /// Creates the reusults of SDRs in a well arrangement
     /// </summary>
-    
     public static int SDR_Results(List<int[]> sdrs, List<int> heads, int minActiveColumn)
     {
         for (int i = 0; i < sdrs.Count; i++)
