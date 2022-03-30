@@ -24,7 +24,7 @@ namespace Trace_SDR.UnitTests
 
             var output = Helpers.StringifyTraceSDR(new List<int[]> { list, list1 });
 
-<<<<<<< HEAD
+
             var expectedResult = new StringBuilder();
             
             var sdr1 = new StringBuilder();
@@ -38,12 +38,12 @@ namespace Trace_SDR.UnitTests
 
             Assert.IsTrue(output == expectedResult.ToString());
            
-=======
+
             var expectedOutput = "51, 76, 87,    ,  \n51, 76,   , 113,";
 
             Assert.IsTrue(output == expectedOutput);
             Console.WriteLine($"{expectedOutput}");
->>>>>>> 4f27fdbaa65f1bf5bc36651ca08ec5930e8b859d
+
 
         }
     }
