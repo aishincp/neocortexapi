@@ -8,6 +8,9 @@ namespace Trace_SDR.UnitTests
     [TestClass]
     public class Helpers_UnitTest
     {
+        /// <summary>
+        /// Compares the similarity of multiple SDRs.
+        /// </summary>
         [TestMethod]
         public void StringifyTest()
         {
@@ -16,14 +19,21 @@ namespace Trace_SDR.UnitTests
 
             var list1 = new int[] { 51, 76, 113 };
 
-            var output = Helpers.StringifyVector(new List<int[]> { list, list1 });
+            var output = Helpers.StringifyTraceSDR(new List<int[]> { list, list1 });
 
+            var expectedResult = new StringBuilder();
+            
+            var sdr1 = new StringBuilder();
+            sdr1.Append("51, 76, 87,    , ");
 
-            var expectedOutput = "51, 76, 87,    ,  \n51, 76,   , 113,";
+            var sdr2 = new StringBuilder();
+            sdr2.Append("51, 76,   , 113, ");
 
+            expectedResult.AppendLine(sdr1.ToString());
+            expectedResult.AppendLine(sdr2.ToString());
 
-            Assert.IsTrue(output == expectedOutput);
-            Console.WriteLine($"{expectedOutput}");
+            Assert.IsTrue(output == expectedResult.ToString());
+           
 
         }
     }

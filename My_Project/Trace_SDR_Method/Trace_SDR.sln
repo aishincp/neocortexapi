@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trace_SDR", "Trace_SDR\Trace_SDR.csproj", "{1BDD57CC-88A4-490A-BEDD-70218C633577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trace_SDR", "Trace_SDR\Trace_SDR.csproj", "{1BDD57CC-88A4-490A-BEDD-70218C633577}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trace_SDR.UnitTests", "Trace_SDR.UnitTests\Trace_SDR.UnitTests.csproj", "{D2EA697E-4D0B-49F4-9363-601FD504EC36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1BDD57CC-88A4-490A-BEDD-70218C633577}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BDD57CC-88A4-490A-BEDD-70218C633577}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BDD57CC-88A4-490A-BEDD-70218C633577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2EA697E-4D0B-49F4-9363-601FD504EC36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2EA697E-4D0B-49F4-9363-601FD504EC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2EA697E-4D0B-49F4-9363-601FD504EC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2EA697E-4D0B-49F4-9363-601FD504EC36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
