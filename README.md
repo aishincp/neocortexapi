@@ -75,6 +75,4 @@ A Unit Test project has been also implemented for our project, tested out the St
 
 ---
 
-The Documentation of this project will be accessible from here.
 
-The code of this project will be accessible from here.
