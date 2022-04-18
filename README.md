@@ -106,7 +106,7 @@ In Hierarchical Temporal Memory, the underlying algorithm tracks the SDRs. These
 
 ## Documentation
 
-The documentation of this project can be found [here](https://github.com/aishincp/neocortexapi/blob/Infinity/My_Project/Documentation/Implement_Trace_SDR_Method.docx)
+The documentation of this project can be found [here](https://github.com/UniversityOfAppliedSciencesFrankfurt/se-cloud-2021-2022/tree/Aishin_AbdullaYoosufali/My_Project/Documentation)
 
 ## Code
 
